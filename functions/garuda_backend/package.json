@@ -1,0 +1,14 @@
+{
+  "name": "garuda_backend",
+  "version": "1.0.0",
+  "description": "GARUDA AI backend serverless function using Zoho Catalyst",
+  "main": "index.js",
+  "dependencies": {
+    "@google/generative-ai": "^0.11.0",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.3",
+    "zcatalyst-sdk-node": "^1.1.0"
+  }
+}

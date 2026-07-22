@@ -1,0 +1,18 @@
+# Node dependency folders
+node_modules/
+**/node_modules/
+
+# Local configuration files
+.env
+.env.local
+.env.*.local
+*.log
+catalyst-debug.log
+
+# Build outputs
+dist/
+**/dist/
+
+# OS metadata files
+.DS_Store
+Thumbs.db

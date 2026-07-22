@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "targets": [
+      "garuda_backend"
+    ]
+  },
+  "client": {
+    "source": "client/dist"
+  }
+}

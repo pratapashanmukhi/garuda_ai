@@ -1,0 +1,74 @@
+{
+  "project_name": "Project-Rainfall",
+  "tables": [
+    {
+      "name": "Transactions",
+      "columns": [
+        { "name": "id", "type": "varchar", "length": 50, "mandatory": true, "unique": true },
+        { "name": "sender", "type": "varchar", "length": 100, "mandatory": true },
+        { "name": "senderAccount", "type": "varchar", "length": 50, "mandatory": true },
+        { "name": "receiver", "type": "varchar", "length": 100, "mandatory": true },
+        { "name": "receiverAccount", "type": "varchar", "length": 50, "mandatory": true },
+        { "name": "amount", "type": "double", "mandatory": true },
+        { "name": "currency", "type": "varchar", "length": 10, "mandatory": true },
+        { "name": "timestamp", "type": "varchar", "length": 50, "mandatory": true },
+        { "name": "senderCountry", "type": "varchar", "length": 10 },
+        { "name": "receiverCountry", "type": "varchar", "length": 10 },
+        { "name": "senderBank", "type": "varchar", "length": 100 },
+        { "name": "receiverBank", "type": "varchar", "length": 100 },
+        { "name": "riskScore", "type": "integer", "mandatory": true },
+        { "name": "status", "type": "varchar", "length": 20, "mandatory": true },
+        { "name": "aiVerdict", "type": "varchar", "length": 500 },
+        { "name": "fraudProbability", "type": "double" },
+        { "name": "category", "type": "varchar", "length": 100 }
+      ]
+    },
+    {
+      "name": "Cases",
+      "columns": [
+        { "name": "id", "type": "varchar", "length": 50, "mandatory": true, "unique": true },
+        { "name": "title", "type": "varchar", "length": 200, "mandatory": true },
+        { "name": "status", "type": "varchar", "length": 20, "mandatory": true },
+        { "name": "severity", "type": "varchar", "length": 20, "mandatory": true },
+        { "name": "assignee", "type": "varchar", "length": 100 },
+        { "name": "createdDate", "type": "varchar", "length": 50, "mandatory": true },
+        { "name": "lastUpdated", "type": "varchar", "length": 50 },
+        { "name": "description", "type": "varchar", "length": 500 },
+        { "name": "totalAmount", "type": "double" },
+        { "name": "linkedAccounts", "type": "varchar", "length": 1000 },
+        { "name": "linkedTransactions", "type": "varchar", "length": 1000 },
+        { "name": "notes", "type": "varchar", "length": 2000 }
+      ]
+    },
+    {
+      "name": "Accounts",
+      "columns": [
+        { "name": "id", "type": "varchar", "length": 50, "mandatory": true, "unique": true },
+        { "name": "name", "type": "varchar", "length": 100, "mandatory": true },
+        { "name": "email", "type": "varchar", "length": 100 },
+        { "name": "accountNumber", "type": "varchar", "length": 50, "mandatory": true },
+        { "name": "bank", "type": "varchar", "length": 100 },
+        { "name": "country", "type": "varchar", "length": 10 },
+        { "name": "riskLevel", "type": "varchar", "length": 20 },
+        { "name": "balance", "type": "double" },
+        { "name": "createdDate", "type": "varchar", "length": 50 },
+        { "name": "lastActivity", "type": "varchar", "length": 50 },
+        { "name": "transactionCount", "type": "integer" }
+      ]
+    },
+    {
+      "name": "Reports",
+      "columns": [
+        { "name": "id", "type": "varchar", "length": 50, "mandatory": true, "unique": true },
+        { "name": "caseId", "type": "varchar", "length": 50, "mandatory": true },
+        { "name": "title", "type": "varchar", "length": 200, "mandatory": true },
+        { "name": "generatedDate", "type": "varchar", "length": 50, "mandatory": true },
+        { "name": "analyst", "type": "varchar", "length": 100 },
+        { "name": "summary", "type": "varchar", "length": 2000 },
+        { "name": "riskLevel", "type": "varchar", "length": 20 },
+        { "name": "evidenceCount", "type": "integer" },
+        { "name": "recommendations", "type": "varchar", "length": 1000 }
+      ]
+    }
+  ]
+}

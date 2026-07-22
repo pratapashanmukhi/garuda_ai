@@ -1,0 +1,18 @@
+import "./App.css";
+
+function App() {
+  return (
+    <div className="container">
+      <h1>🦅 GARUDA AI</h1>
+      <h2>Financial Fraud Investigation Platform</h2>
+
+      <p>
+        Trace suspicious transactions, detect fraud and visualize money flow.
+      </p>
+
+      <button>Get Started</button>
+    </div>
+  );
+}
+
+export default App;
