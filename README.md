@@ -67,3 +67,14 @@ graph TD
     C <--> E[Zoho Catalyst Relational Data Store]
 
 ```
+
+
+:
+
+### 🤖 API & AI Engine
+Explains how the backend function (index.js) connects to the Google Gemini SDK to calculate multi-hop risk profiles and format compliance notices.
+
+### 📄 License
+States that the project is proprietary and built for financial intelligence and Law Enforcement investigations.
+
+
