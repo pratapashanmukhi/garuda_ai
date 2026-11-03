@@ -1,4 +1,4 @@
-﻿# GARUDA AI — Financial Fraud Investigation & Multi-Hop Money Flow Platform
+# GARUDA AI - Financial Fraud Investigation & Multi-Hop Money Flow Platform
 
 [![React](https://img.shields.io/badge/React-19-blue.svg?logo=react&logoColor=white)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -11,52 +11,53 @@
 
 ---
 
-## Overview
+## Project Overview
 
-**GARUDA AI** is a specialized financial intelligence and fraud investigation platform built for financial analysts, fraud risk investigators, and Law Enforcement Agencies (LEAs). The application is optimized for **"The Golden Hour"**—the critical time window immediately following an unauthorized transaction when stolen funds can still be traced, localized across intermediary bank hops, and frozen before siphoning into cryptocurrency or offshore accounts.
+**GARUDA AI** is an enterprise-grade financial intelligence and cyber-fraud investigation platform engineered for financial forensic analysts, fraud risk officers, and Law Enforcement Agencies (LEAs). The application is optimized specifically for **"The Golden Hour"**—the critical initial time window immediately following an unauthorized financial transaction when stolen funds can still be actively traced across intermediary banking hops and frozen before liquidation into peer-to-peer crypto exchanges or offshore accounts.
 
-By leveraging automated transactional graph traversal and Google Gemini LLMs, GARUDA AI reconstructs complex multi-hop fund routing, evaluates entity threat scores, and generates legally compliant investigation notices (such as Section 91 CrPC notices) in seconds.
+By coupling real-time transactional graph traversal with Google Gemini Generative AI, GARUDA AI reconstructs multi-hop layering paths, computes entity risk scores, and drafts legally compliant notices (such as Section 91 CrPC freeze directives) in seconds.
+
+### Problem Statement
+- **Layering Velocity**: Cyber fraudsters rapidly split and transfer stolen funds across 5–10 mule bank accounts within 30 minutes to obfuscate the paper trail.
+- **Inter-Bank Friction**: Each intermediary banking institution operates independently, requiring manual phone calls or email dispatches that take days.
+- **Administrative Bottlenecks**: Drafting formal legal freeze notices and regulatory dossiers manually delays asset recovery until after cash-out occurs.
 
 ---
 
 ## Key Features
 
-- **Real-Time Incident Command Center**: Dynamic monitoring tracking Scammed Amount, Active Incidents, High-Risk Accounts, and Freezable Funds.
-- **Golden Hour Alert Matrix**: Instant prioritized guidance directing investigators to the fastest actionable recovery pathways.
-- **Multi-Hop Transaction Graph**: Visual graph traversal mapping the flow of illicit capital from victim accounts through mule layers to final cashout endpoints.
-- **AI-Powered Legal Notice Generation**: Automatically formats and populates legal bank freeze notices and Section 91 directives via Google Gemini API.
-- **Entity Threat Scoring**: Heuristic and probabilistic risk scoring identifying mule accounts, transaction layering velocity, and burst transfers.
-- **Automated Case Dossier Export**: Compiles forensic evidence, transaction histories, and visual maps into audit-ready PDF/CSV reports.
+- **Golden Hour Incident Command**: Live dashboard tracking Total Scammed Volume, Active Cases, Compromised Accounts, and Real-Time Freezable Balances.
+- **Multi-Hop Money Flow Graph**: Interactive canvas visualizing the topological journey of stolen capital from origin victim accounts through intermediary mule tiers to final liquidation sinks.
+- **AI-Powered Legal Notice Generator**: Integrates Google Gemini API to dynamically generate jurisdiction-compliant bank freeze directives and Section 91 CrPC notices.
+- **Entity Threat Scoring & Anomaly Detection**: Algorithmic scoring evaluating transaction velocity, burst deposits, account dormancy reversal, and shell characteristics.
+- **Relational Fraud Data Engine**: Purpose-built schema tracking `Cases`, `Transactions`, `Accounts`, and `Reports` on Zoho Catalyst Serverless infrastructure.
+- **Role-Based Access Control (RBAC)**: Secure multi-tier authentication accommodating Administrators, Investigators, Read-only Analysts, Bank Officers, and Auditors.
 
 ---
 
-## Architecture & Tech Stack
+## Architecture & Workflow
 
 ```
-[Victim Fraud Report / Bank Ingestion]
+[ Victim Fraud Ingestion / Bank Telemetry ]
                      │
                      ▼
-[Zoho Catalyst Serverless Backend]
-  ├── Multi-Hop Graph Traversal Engine
-  ├── Velocity & Anomaly Vector Evaluator
-  └── Relational Schema Operations (database_schema.json)
+  [ Zoho Catalyst Serverless Functions (functions/garuda_backend) ]
+   ├── Authentication & RBAC (bcryptjs + JWT)
+   ├── Multi-Hop Graph Traversal Engine
+   ├── Velocity & Transaction Anomaly Evaluator
+   └── Relational Data Store (Transactions, Accounts, Cases, Reports)
                      │
                      ▼
-[Google Gemini Generative AI Engine]
-  ├── Entity Context Summarization
-  └── Automated Legal Notice Drafting (Sec 91 CrPC)
+  [ Google Gemini Generative AI Engine ]
+   ├── Threat Dossier Summarization
+   └── Automated Legal Freeze Notice Generation (Sec 91 CrPC)
                      │
                      ▼
-[React 19 / TypeScript / Vite Client]
-  ├── Interactive Multi-Hop Graph Canvas
-  ├── Real-time Analytics Visualizations (Recharts)
-  └── Case File Evidence Vault
+  [ React 19 / TypeScript / Vite Client (client/) ]
+   ├── Real-Time Multi-Hop Graph Canvas
+   ├── Interactive Analytics Visualizations (Recharts)
+   └── Case Management & Evidence Vault
 ```
-
-- **Frontend**: React 19, TypeScript, Vite, Tailwind CSS, Recharts, Lucide Icons
-- **Backend**: Zoho Catalyst Serverless Functions (Node.js / Express)
-- **AI Engine**: Google Gemini API for automated legal compliance drafting
-- **Database**: Catalyst Data Store / Relational Schema (`database_schema.json`)
 
 ---
 
@@ -66,65 +67,89 @@ By leveraging automated transactional graph traversal and Google Gemini LLMs, GA
 garuda_ai/
 ├── client/                     # React 19 + TypeScript frontend application
 │   ├── src/
-│   │   ├── components/         # Graph visualizer, alert panels, case cards
-│   │   ├── services/           # API and Catalyst SDK integrations
-│   │   └── App.tsx             # Root dashboard
-│   ├── package.json
-│   └── vite.config.ts
-├── functions/                  # Zoho Catalyst serverless backend functions
-├── catalyst.json               # Catalyst deployment configuration
-├── database_schema.json        # Relational entity-relationship fraud schema
-├── .env.example                # Environment variables template
+│   │   ├── components/         # Interactive graph canvas, alerts, case dossier
+│   │   ├── services/           # REST API & Catalyst client connectors
+│   │   ├── App.tsx             # Root dashboard controller
+│   │   └── main.tsx            # Client entrypoint
+│   ├── package.json            # Frontend dependencies (React 19, Lucide, Recharts)
+│   └── vite.config.ts          # Vite build configuration
+├── functions/                  # Zoho Catalyst serverless backend
+│   └── garuda_backend/
+│       ├── index.js            # Express API, Gemini AI integration, auth handlers
+│       └── package.json        # Backend dependencies (zcatalyst-sdk, express, gemini)
+├── database_schema.json        # Relational schema (Transactions, Cases, Accounts, Reports)
+├── catalyst.json               # Catalyst serverless deployment manifest
+├── .catalystrc                 # Project environment metadata
+├── .env.example                # Configuration template
 ├── .gitignore                  # Exclusion rules
-└── README.md                   # Project documentation
+└── README.md                   # Comprehensive documentation
 ```
 
 ---
 
-## Installation & Setup
+## Getting Started
 
 ### Prerequisites
 
-- Node.js (v18.x or v20.x)
-- npm or yarn
-- Zoho Catalyst CLI (`npm install -g zcatalyst-cli`)
-- Google Gemini API Key
+- Node.js (`v18.x` or `v20.x` recommended)
+- `npm` or `pnpm`
+- Google Gemini API Key ([Google AI Studio](https://aistudio.google.com/))
+- Zoho Catalyst CLI (`npm install -g zcatalyst-cli` for cloud deployment)
 
-### Setup Instructions
+### 1. Environment Configuration
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/pratapashanmukhi/garuda_ai.git
-   cd garuda_ai
-   ```
+Copy `.env.example` to `.env` in the project root:
 
-2. **Configure Environment Variables:**
-   ```bash
-   cp .env.example .env
-   # Populate your GEMINI_API_KEY and Catalyst identifiers
-   ```
+```bash
+cp .env.example .env
+```
 
-3. **Install client dependencies:**
-   ```bash
-   cd client
-   npm install
-   ```
+Configure your credentials:
+```env
+CATALYST_PROJECT_ID=your_catalyst_project_id
+GEMINI_API_KEY=your_actual_gemini_api_key
+PORT=3000
+NODE_ENV=development
+```
 
-4. **Run the local development server:**
-   ```bash
-   npm run dev
-   ```
+### 2. Frontend Setup (React Client)
 
-5. **Start Catalyst functions (optional for local backend testing):**
-   ```bash
-   cd ..
-   catalyst serve
-   ```
+```bash
+cd client
+npm install
+npm run dev
+```
+*The frontend dashboard will be available at `http://localhost:5173`.*
+
+### 3. Backend Setup (Catalyst Functions)
+
+In a separate terminal:
+
+```bash
+cd functions/garuda_backend
+npm install
+node index.js
+```
+*Or run locally via the Catalyst emulator:*
+```bash
+catalyst serve
+```
+
+---
+
+## Database Architecture
+
+The platform operates on a validated relational schema (`database_schema.json`):
+- **`Cases`**: Unique incident records, victim metadata, fraud classification, and golden hour countdowns.
+- **`Accounts`**: Flagged financial nodes, risk scores, KYC state, and bank affiliation.
+- **`Transactions`**: Directional edges, timestamps, monetary amounts, and hop depths.
+- **`Reports`**: Audit logs, evidence packages, and generated legal notice artifacts.
 
 ---
 
 ## Author
 
 **Shanmukhi Pratapa**  
-B.Tech CSE (AI & ML) — VIT-AP University  
+B.Tech Computer Science & Engineering (Artificial Intelligence & Machine Learning)  
+VIT-AP University  
 GitHub: [@pratapashanmukhi](https://github.com/pratapashanmukhi)
